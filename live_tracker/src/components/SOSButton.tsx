@@ -1,7 +1,7 @@
 import { useState } from 'react'; // Fix 1: More specific import
 import { useLocation } from '../hooks/useLocation';
 import './SOSButton.css';
-
+import { API_URL } from '../config';
 const SOSButton = () => {
     const { latitude, longitude } = useLocation();
     const [isAlertSent, setIsAlertSent] = useState(false);
@@ -19,7 +19,7 @@ const SOSButton = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:5001/api/sos/trigger', {
+            const response = await fetch(`${API_URL}/api/sos/trigger`,{
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

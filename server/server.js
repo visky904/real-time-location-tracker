@@ -4,13 +4,28 @@ require('dotenv').config();
 // Import necessary packages
 const express = require('express');
 const cors = require('cors');
+
+const allowedOrigins = ['https://real-time-location-tracker-zs1l.vercel.app'];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  }
+};
+
 const twilio = require('twilio');
 
 // Initialize the Express app
 const app = express();
 
 // Middleware to allow cross-origin requests from your React app
-app.use(cors());
+app.use(cors(corsOptions));
 // Middleware to parse incoming JSON bodies
 app.use(express.json());
 

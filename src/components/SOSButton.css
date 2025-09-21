@@ -1,0 +1,56 @@
+.sos-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #ff0000;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  border: 4px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  z-index: 1000;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.sos-sent {
+  /* Style for the confirmation message */
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 20px;
+  background-color: #28a745;
+  color: white;
+  border-radius: 10px;
+  z-index: 1000;
+}
+
+/* Add this to SOSButton.css */
+.sos-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sos-error {
+    color: red;
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 14px;
+    text-align: center;
+}
